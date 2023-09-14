@@ -1,0 +1,13 @@
+OLED.init(128, 64)
+basic.forever(function () {
+    OLED.clear()
+    OLED.writeString("Teplota")
+    OLED.writeNumNewLine(Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C))
+    OLED.writeString("Vlhkost:")
+    OLED.writeNumNewLine(Environment.octopus_BME280(Environment.BME280_state.BME280_humidity))
+    OLED.writeString("Tlak:")
+    OLED.writeNumNewLine(Environment.octopus_BME280(Environment.BME280_state.BME280_pressure))
+    OLED.writeString("Prach:")
+    OLED.writeNumNewLine(Environment.ReadDust(DigitalPin.P16, AnalogPin.P1))
+    basic.pause(60000)
+})
